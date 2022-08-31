@@ -16,9 +16,10 @@ export class PostsController {
     }
 
     @Get(':id')
-    async findOne(@Param('id') id: number): Promise<PostEntity> {
+    async findPostsOfUser(@Param('id') id: number): Promise<PostEntity[]> {
         // find the post with this id
-        const post = await this.postService.findOne(id);
+        // const post = await this.postService.findOne(id);
+        const post = await this.postService.findPostsOfUser(id);
 
         // if the post doesn't exit in the db, throw a 404 error
         if (!post) {
